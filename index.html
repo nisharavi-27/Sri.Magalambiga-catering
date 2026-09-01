@@ -26,66 +26,38 @@
 
     <header class="header">
 
-        <!-- LOGO -->
+    <a href="index.html" class="logo-area">
+        <div class="logo-circle">
+            <img src="images/mcslogo.jpg" alt="Sri Mangalambiga Catering Logo">
+        </div>
+        <div class="logo-text">
+            <h2>SRI MANGALAMBIGA</h2>
+            <p>Pure Vegetarian Catering</p>
+        </div>
+    </a>
 
-        <a href="index.html" class="logo-area">
+    <!-- Hamburger Toggle Button -->
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
 
-            <div class="logo-circle">
-                <img src="images/mcslogo.jpg"
-                    alt="Sri Mangalambiga Catering Logo">
-            </div>
+    <!-- Navbar Navigation Menu -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="menu.html">Menu</a>
+        <a href="events.html">Events</a>
+        <a href="tradition.html">Our Tradition</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
-            <div class="logo-text">
+    <a href="contact.html" class="book-btn">
+        Book Now
+    </a>
 
-                <h2>SRI MANGALAMBIGA</h2>
-
-                <p>Pure Vegetarian Catering</p>
-
-            </div>
-
-        </a>
-
-
-        <!-- NAVIGATION -->
-
-        <nav class="navbar">
-
-            <a href="index.html" class="active">
-                Home
-            </a>
-
-            <a href="services.html">
-                Services
-            </a>
-
-            <a href="menu.html">
-                Menu
-            </a>
-
-            <a href="events.html">
-                Events
-            </a>
-
-            <a href="tradition.html">
-                Our Tradition
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </nav>
-
-
-        <!-- BOOK BUTTON -->
-
-        <a href="contact.html" class="book-btn">
-            Book Now
-        </a>
-
-    </header>
-
-
+</header>
 
     <!-- =================================================
          HERO SECTION
@@ -107,11 +79,12 @@
 
                 <h6 class="content-hero">
 
-                    பாரம்பரிய சுவை
+                    Tradition on Every Plate.
+
                     <br>
 
                     <span>
-                        தூய சைவ விருந்து
+                        Memories in Every Bite.
                     </span>
 
                 </h6>
@@ -170,7 +143,7 @@
 
                 <div class="image-frame">
 
-                    <img src="images/banana-leaf.jpg"
+                    <img src="images/tradition-food.jpg"
                         alt="Traditional South Indian Vegetarian Meal">
 
                 </div>
@@ -287,21 +260,22 @@
             <div class="intro-content">
                   
                 <div class="intro-card" style="--bg: url('images/south-indian-meals.jpg');">
-    <span>01</span>
-    <h3>Traditional Recipes</h3>
-    <p>
-        Authentic flavours inspired by
-        generations of South Indian cooking.
-    </p>
-</div>
 
-<div class="intro-card" style="--bg: url('images/buffete.png');">
-    <span>02</span>
-    <h3>Complete Catering</h3>
-    <p>
-        From cooking and preparation to
-        serving and event arrangements.
-    </p>
+                 <span>01</span>
+                 <h3>Traditional Recipes</h3>
+                 <p>
+                     Authentic flavours inspired by
+                     generations of South Indian cooking.
+                </p>
+            </div>
+
+            <div class="intro-card" style="--bg: url('images/buffete.png');">
+             <span>02</span>
+             <h3>Complete Catering</h3>
+             <p>
+              From cooking and preparation to
+              serving and event arrangements.
+             </p>
 </div>
 
 <div class="intro-card" style="--bg: url('images/service.png');">
@@ -810,12 +784,9 @@
                 </h3>
 
                 <p>
-                    📞 +91 98410 15297
+                    📞 +91 98410 15297 / 86674 63419
                 </p>
 
-                <p>
-                    📞 +91 86674 63419
-                </p>
 
                 <p>
                     📍 Nanganallur, Chennai
@@ -838,6 +809,25 @@
         </div>
 
     </footer>
+    <script>
+    const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+    </script>
 
 
 
