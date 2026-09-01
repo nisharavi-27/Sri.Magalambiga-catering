@@ -157,7 +157,25 @@ img {
 /* =====================================================
    NAVIGATION
 ===================================================== */
+.menu-toggle{
+    display:none;
+}
 
+@media(max-width:768px){
+    .nav-menu {
+        display: none; /* Hidden by default on mobile */
+    }
+    .nav-menu.active {
+        display: block; /* Shown when toggled */
+    }
+    .menu-toggle {
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+}
 .navbar {
     display: flex;
     align-items: center;
@@ -303,9 +321,9 @@ img {
 /* Main Tamil heading */
 
 .content-hero {
-    font-family: "Cormorant Garamond", serif;
+    font-family: 'Marcellus', 'Cormorant Garamond', serif;;
 
-    font-size: clamp(20px, 3vw, 45px);
+    font-size: clamp(32px, 9vw, 44px);
 
     line-height: 1.05;
 
@@ -3351,8 +3369,7 @@ section {
 
     border-radius: 15px;
 
-    box-shadow:
-        0 18px 45px rgba(70, 20, 10, 0.12);
+   
 
     border: 1px solid #ead7b3;
 
@@ -4192,5 +4209,359 @@ section {
         right: 20px;
         font-size: 35px;
     }
+}
+/* =====================================================
+   HAMBURGER BUTTON STYLES
+===================================================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
 
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--maroon);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger 'X' Animation */
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* =====================================================
+   MOBILE NAVIGATION DROPDOWN
+===================================================== */
+@media (max-width: 800px) {
+    .header {
+        position: sticky;
+        top: 0;
+        justify-content: space-between;
+        padding: 12px 6%;
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger button on mobile */
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--cream);
+        border-bottom: 2px solid var(--border);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px 0;
+        gap: 15px;
+
+        /* Hidden state */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.4s ease, opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Active state to reveal menu */
+    .navbar.active {
+        max-height: 400px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        padding: 8px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .book-btn {
+        display: none; /* Hide button on mobile view if desired */
+    }
+}
+/* =====================================================
+   GLOBAL LAYOUT & RESPONSIVE RESETS
+===================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/* Enable sections to expand gracefully across large screens */
+section {
+    width: 100%;
+    max-width: 1400px; /* Expands wider on larger screens */
+    margin: 0 auto;
+    padding: 60px 5%; /* Fluid percentage padding */
+}
+
+/* =====================================================
+   FLUID TYPOGRAPHY (Scales automatically with screen size)
+===================================================== */
+h1 {
+    font-size: clamp(2rem, 4vw + 1rem, 3.8rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.6rem, 3vw + 0.8rem, 2.8rem);
+    line-height: 1.3;
+}
+
+p {
+    font-size: clamp(0.95rem, 1vw + 0.5rem, 1.15rem);
+    line-height: 1.6;
+}
+
+.section-label {
+    font-size: clamp(0.75rem, 0.8vw + 0.4rem, 0.95rem);
+    letter-spacing: 2px;
+}
+
+/* =====================================================
+   SECTION-SPECIFIC LAYOUT FIXES
+===================================================== */
+
+/* 1. Heritage & Banana Leaf Sections (2-Column Flex Layout) */
+.heritage-section,
+.banana-leaf-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    width: 100%;
+}
+
+.heritage-image,
+.heritage-content,
+.banana-leaf-content,
+.banana-leaf-image {
+    flex: 1 1 50%; /* Allows columns to grow evenly */
+    min-width: 300px;
+}
+
+.heritage-image img,
+.banana-leaf-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+/* 2. Tradition Cards Grid (4 Cards Row) */
+.tradition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.tradition-card {
+    width: 100%;
+    padding: 30px 20px;
+}
+
+/* 3. Heritage Food Grid (3 Cards Row) */
+.heritage-food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.heritage-food-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+/* Ensure every section spans full browser width */
+section, 
+header, 
+footer {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Page Hero full-bleed background */
+.tradition-page-hero {
+    width: 100%;
+    background-color: #4a151b; /* Outer dark red hero background */
+    padding: 80px 2rem;
+}
+
+/* Heritage Section background */
+.heritage-section {
+    width: 100%;
+    background-color: #fcf8ee; /* Cream background */
+    padding: 80px 2rem;
+}
+
+/* Tradition Values background */
+.tradition-values {
+    width: 100%;
+    background-color: #f5ebd9; /* Slightly darker cream background */
+    padding: 80px 2rem;
+}
+/* Target inner flex layouts */
+.heritage-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1400px; /* Allow wider content stretch before capping */
+    margin: 0 auto;
+}
+
+/* Allow images and text blocks to expand dynamically */
+.heritage-image {
+    flex: 1 1 50%;
+    max-width: 600px; /* Prevents image from staying tiny */
+}
+
+.heritage-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+}
+
+.heritage-content {
+    flex: 1 1 50%;
+}
+/* Hero main title scales fluidly */
+.tradition-page-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Section headings */
+h2 {
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+}
+
+p {
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+    line-height: 1.6;
+}
+/* =====================================================
+   FULL-WIDTH CONTAINER FIXES
+===================================================== */
+
+/* 1. Banana Leaf Section (Full Bleed Cream Background) */
+.banana-leaf-section {
+    width: 100%;
+    background-color: #fcf8ee; /* Main light background */
+    padding: 80px 5%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+/* Inner content constraint so it scales nicely */
+.banana-leaf-content, 
+.banana-leaf-image {
+    flex: 1 1 50%;
+    max-width: 650px; /* Expands wider on zoomed out displays */
+}
+
+.banana-leaf-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+/* List items inside banana leaf section */
+.leaf-points {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.leaf-points div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* 2. Food Heritage Section (Full Bleed Background & Responsive Grid) */
+.food-heritage {
+    width: 100%;
+    background-color: #f5ebd9; /* Slightly darker cream background */
+    padding: 80px 5%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.food-heritage .section-heading {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+
+/* Convert stacked cards into a side-by-side dynamic grid */
+.heritage-food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px; /* Spreads out horizontally instead of stacking vertically */
+    margin: 0 auto;
+    width: 100%;
+}
+
+.heritage-food-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.heritage-food-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.heritage-food-card div {
+    padding: 25px;
 }
