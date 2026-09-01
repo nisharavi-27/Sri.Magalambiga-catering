@@ -263,3 +263,47 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 });
+
+ function toggleMenu() {
+    const navbar = document.getElementById("navbar");
+    navbar.classList.toggle("active");
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navbar = document.getElementById("navbar");
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    // Toggle dropdown menu on hamburger click
+    if (hamburgerBtn && navbar) {
+        hamburgerBtn.addEventListener("click", function () {
+            hamburgerBtn.classList.toggle("active");
+            navbar.classList.toggle("active");
+        });
+    }
+
+    // Close navigation menu when any link is clicked
+    navLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+            if (navbar && navbar.classList.contains("active")) {
+                navbar.classList.remove("active");
+            }
+            if (hamburgerBtn && hamburgerBtn.classList.contains("active")) {
+                hamburgerBtn.classList.remove("active");
+            }
+        });
+    });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".product-card");
+
+  cards.forEach((card) => {
+    // Works for both click and mobile touch
+    card.addEventListener("click", () => {
+      // Remove active state from all cards
+      cards.forEach((c) => c.classList.remove("active"));
+      
+      // Add active state to the selected card
+      card.classList.add("active");
+    });
+  });
+});
