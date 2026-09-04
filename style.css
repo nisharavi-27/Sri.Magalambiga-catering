@@ -1133,7 +1133,7 @@ button {
 }
 
 
-.footer-brand img {
+.brand img {
 
     width: 250px;
 
@@ -1221,6 +1221,7 @@ button {
 }
 
 
+
 /* =========================================================
    RESPONSIVE TABLET
 ========================================================= */
@@ -1295,6 +1296,7 @@ button {
 
 
     .footer-brand {
+        
 
         grid-column: span 2;
 
@@ -3332,6 +3334,11 @@ body {
             #344f29
         );
 }
+.btn.btn-light{
+    margin-top:20px;
+}
+
+
 
 
 /* =========================================================
@@ -4089,4 +4096,106 @@ body {
         font-size: 23px;
     }
 
+}
+.footer-brand {
+         width:220px;
+         height:auto;
+         object-fit:contain;
+         display:block;
+         margin-bottom: 20px;
+    }
+
+.footer-social{
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.footer-social a{
+    width: 45px;
+    height: 45px;
+    background: #9c1c32;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.footer-social a:hover{
+    background: #d9a15b;
+    transform: translateY(-5px);
+}
+.book-btn{
+    background: #8b1538;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+    margin-left: 20px;
+}
+
+.book-btn:hover{
+    background: #b8860b;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.book-btn{
+    background:#8b1538;
+    color:#fff;
+    padding:12px 24px;
+    border-radius:30px;
+    text-decoration:none;
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .book-btn{
+        display:none;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+}
+@media (max-width:768px){
+
+    .book-btn{
+        display:block;
+        position:absolute;
+        right:70px; /* before hamburger icon */
+        top:50%;
+        transform:translateY(-50%);
+    }
+}
+@media (max-width: 768px) {
+
+    .nav-open .book-btn,
+    .menu-open .book-btn {
+        display: none;
+    }
+
+}
+@media (max-width: 768px) {
+
+    .nav-links.active ~ .book-btn {
+        display: none;
+    }
+
+}
+.book-btn{
+    background: #8b1538;
+    color: #fff;
+    padding: 10px 20px;   /* Before 12px 28px */
+    border-radius: 25px;
+    font-size: 14px;      /* Smaller text */
+    font-weight: 600;
+    text-decoration: none;
 }
